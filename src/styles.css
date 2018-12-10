@@ -1,10 +1,12 @@
 body,
-html {
+html
+{
   margin: 0;
   font: 400 15px sans-serif;
 }
 
-a {
+a
+{
   color: #0054b9;
   text-decoration: none;
 }
