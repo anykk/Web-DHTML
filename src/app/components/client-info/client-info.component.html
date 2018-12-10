@@ -1,0 +1,59 @@
+<header class="header">
+  <ul class="client-info">
+    <li>
+      <h1 class="client-info__title">
+        {{currentClient.type}}
+        {{currentClient.surname}}<br>
+        {{currentClient.name}} {{currentClient.patronymic}}
+      </h1>
+    </li>
+    <li class="d-inline">
+      <a
+        class="client-info__phone"
+        href="tel:{{currentClient.phone}}"
+      >
+        {{currentClient.phone}}
+      </a>
+    </li>
+    <li class="d-inline">
+      <a
+        class="client-info__page"
+        href="#"
+      >
+        {{currentClient.page}}
+      </a>
+    </li>
+    <li class="d-inline">
+      <a
+        class="client-info__mail"
+        href="mailto:{{currentClient.email}}"
+      >
+        {{currentClient.email}}
+      </a>
+    </li>
+    <li>
+      <a
+        class="client-info__about"
+        href="#"
+      >
+        Информация о компании
+      </a>
+    </li>
+    <li>
+      <a
+        class="client-info__requisites"
+        href="#"
+      >
+        Показать реквизиты
+      </a>
+    </li>
+  </ul>
+  <div class="client-logo">
+    <img
+      class="client-logo__img"
+      src="https://s3.tradingview.com/userpics/63396_orig.png"
+      alt="Логотип клиента (птица мозгоклюй)"
+      width="300px" height="250px"
+    >
+  </div>
+</header>
