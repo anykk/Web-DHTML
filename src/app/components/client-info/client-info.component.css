@@ -41,13 +41,6 @@
 
 @media screen and (max-width: 768px)
 {
-  .header
-  {
-    padding: 2px 5px;
-
-    flex-direction: column;
-  }
-
   .client-info li
   {
     padding: 0;

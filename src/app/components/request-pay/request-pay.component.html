@@ -1,3 +1,113 @@
 <p>
-  request-pay works!
+  Создайте платёжку, а Индивидуальный предприниматель {{name}} {{surname}} {{patronymic}}
+  подпишет её у себя в интернет-банке
 </p>
+<form #f="ngForm" class="form" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="form__row">
+    <label for="inn">ИНН получателя</label>
+    <input
+      class=""
+      type="text"
+      name="inn"
+      id="inn"
+      placeholder="ИНН или название получателя"
+      pattern="[0-9]{10}|[0-9]{12}"
+      minlength="10"
+      maxlength="12"
+      [(ngModel)]="paymentInfo.inn"
+      #inn="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="bik">БИК</label>
+    <input
+      class="class"
+      type="text"
+      name="bik"
+      id="bik"
+      pattern="[0-9]{9}"
+      minlength="9"
+      maxlength="9"
+      ngModel
+      #bik="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="bankAccount">Номер счёта</label>
+    <input
+      class="class"
+      type="text"
+      name="bankAccount"
+      id="bankAccount"
+      pattern="[0-9]{20}"
+      placeholder="20 цифр"
+      minlength="20"
+      maxlength="20"
+      ngModel
+      #bankAccount="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="nds">За что</label>
+    <select name="nds" id="nds" [(ngModel)]="paymentInfo.nds" #nds="ngModel" required>
+      <option value="" disabled selected hidden>
+        Выберите один из вариантов
+      </option>
+      <option>НДС 18%</option>
+      <option>НДС 10%</option>
+      <option>без НДС</option>
+    </select>
+  </div>
+  <div class="form__row">
+    <label for="sum">Сколько</label>
+    <input
+      type="number"
+      name="sum"
+      id="sum"
+      placeholder="от 1000 до 75000 ₽"
+      min="1000"
+      max="75000"
+      ngModel
+      #sum="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="phone">Номер телефона</label>
+    <input
+      type="text"
+      name="phone"
+      id="phone"
+      placeholder="+ 7"
+      pattern="^\+ 7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}$"
+      [textMask]="{mask: phoneMask, guide: false}"
+      ngModel
+      #sum="ngModel"
+    >
+    <small>
+      Оставляя телефон, вы соглашаетесь на обработку персональных данных
+    </small>
+  </div>
+  <div class="form__row">
+      <label for="email">Эл.почта</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+        placeholder="Для уведомлений об оплате"
+        ngModel
+        #email="ngModel"
+        required
+      >
+    </div>
+  <button class="" type="submit" [disabled]="f.invalid">
+    Получить файл для интернет-банка
+  </button>
+  <button class="" type="reset" [disabled]="f.untouched || f.pristine">
+    Очистить форму
+  </button>
+</form>

@@ -1,3 +1,83 @@
-<p>
-  own-bank works!
-</p>
+<form #f="ngForm" class="form" (ngSubmit)="onSubmit(f)" novalidate>
+  <div class="form__row">
+    <label for="inn">От кого</label>
+    <input
+      class=""
+      type="text"
+      name="inn"
+      id="inn"
+      placeholder="ИНН или название плательщика"
+      pattern="[0-9]{10}|[0-9]{12}"
+      minlength="10"
+      maxlength="12"
+      ngModel
+      #inn="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="bik">БИК</label>
+    <input
+      class=""
+      type="text"
+      name="bik"
+      id="bik"
+      pattern="[0-9]{9}"
+      minlength="9"
+      maxlength="9"
+      ngModel
+      #bik="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="bankAccount">Номер счёта</label>
+    <input
+      class=""
+      type="text"
+      name="bankAccount"
+      id="bankAccount"
+      pattern="[0-9]{20}"
+      placeholder="20 цифр"
+      minlength="20"
+      maxlength="20"
+      ngModel
+      #bankAccount="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="sum">Сколько</label>
+    <input
+      class=""
+      width="100%"
+      type="text"
+      name="sum"
+      id="sum"
+      placeholder="от 1000 до 75000 ₽"
+      pattern="^[0-9]{4,5}$"
+      minlength="4"
+      maxlength="5"
+      ngModel
+      #sum="ngModel"
+      required
+    >
+  </div>
+  <div class="form__row">
+    <label for="nds">За что</label>
+    <select name="nds" id="nds" ngModel #nds="ngModel" required>
+        <option value="" disabled selected hidden>
+          Выберите один из вариантов
+        </option>
+        <option>НДС 18%</option>
+        <option>НДС 10%</option>
+        <option>без НДС</option>
+    </select>
+  </div>
+  <button class="" type="submit" [disabled]="f.invalid">
+    Получить файл для интернет-банка
+  </button>
+  <button class="" type="reset" [disabled]="f.untouched || f.pristine">
+    Очистить форму
+  </button>
+</form>

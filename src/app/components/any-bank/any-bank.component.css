@@ -1,0 +1,120 @@
+.form
+{
+  margin: 10px 0 0;
+
+  display: flex;
+  justify-content: center;
+}
+
+.card-container
+{
+  margin: 0 60px 0 0;
+
+  width: 360px;
+  height: 200px;
+
+  display: grid;
+  grid-template:
+    '. .' 20px
+    '. logo-pics' 60px
+    'inputs inputs' auto / 55% 45%;
+
+  background-color: #f5f5f5;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.188);
+  border-radius: 15px;
+}
+
+.card-container__logo-pics
+{
+  width: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  grid-area: logo-pics;
+}
+
+.card-group
+{
+  grid-area: inputs;
+  padding: 0 0 30px 10px;
+
+  display: grid;
+  grid-template:
+    'number number' auto
+    'expiry cvc' auto / 40% 40%;
+    grid-row-gap: 10px;
+}
+
+.card-group__number
+{
+  grid-area: number;
+}
+
+.card-group__expiry
+{
+  grid-area: expiry;
+
+  width: 80px;
+}
+
+.card-group__cvc
+{
+  grid-area: cvc;
+
+  width: 60px;
+}
+
+.additional-group
+{
+  display: flex;
+
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.additional-group__row
+{
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.button
+{
+  cursor: pointer;
+
+  border: none;
+  background: none;
+
+  background-color: #fff;
+  background-size: contain;
+  background-image: url('https://static.tildacdn.com/tild3464-3130-4365-a233-613965613735/BUTTON_1.png');
+
+  height: 50px;
+  width: 170px;
+}
+
+.button:disabled
+{
+  cursor: default;
+
+  opacity: .6;
+  color: #000;
+}
+
+
+@media screen and (max-width: 768px)
+{
+  .card-container
+  {
+    margin: 0 0 20px 0;
+  }
+
+  .form
+  {
+    flex-direction: column;
+    align-items: center;
+  }
+}

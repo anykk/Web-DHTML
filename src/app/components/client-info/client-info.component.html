@@ -1,17 +1,17 @@
 <ul class="client-info">
   <li>
     <h1 class="client-info__title">
-      {{currentClient.type}}
-      {{currentClient.surname}}<br>
-      {{currentClient.name}} {{currentClient.patronymic}}
+      Индивидуальный предприниматель
+      {{client.surname}}<br>
+      {{client.name}} {{client.patronymic}}
     </h1>
   </li>
   <li class="d-inline">
     <a
       class="client-info__phone"
-      href="tel:{{currentClient.phone}}"
+      href="tel:{{client.phone}}"
     >
-      {{currentClient.phone}}
+      {{client.phone}}
     </a>
   </li>
   <li class="d-inline">
@@ -19,15 +19,15 @@
       class="client-info__page"
       href="#"
     >
-      {{currentClient.page}}
+      {{client.site}}
     </a>
   </li>
   <li class="d-inline">
     <a
       class="client-info__mail"
-      href="mailto:{{currentClient.email}}"
+      href="mailto:{{client.email}}"
     >
-      {{currentClient.email}}
+      {{client.email}}
     </a>
   </li>
   <li>

@@ -1,12 +1,36 @@
-body,
-html
+
+html, body
 {
   margin: 0;
-  font: 400 15px sans-serif;
 }
 
 a
 {
   color: #0054b9;
   text-decoration: none;
+}
+
+input:focus
+{
+  outline: none;
+  border-color: rgba(0, 236, 0, 0.7);
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input
+{
+  border: none;
+  border-bottom: 2px solid #d3d3d3;
+
+  background-color: transparent;
+}
+
+button:focus
+{
+  outline: none;
 }

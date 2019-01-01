@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientInfo } from 'src/app/app.module';
+import { ClientInfo } from 'src/app/structures/client-info';
 
 @Component({
   selector: 'app-client-info',
@@ -7,19 +7,18 @@ import { ClientInfo } from 'src/app/app.module';
   styleUrls: ['./client-info.component.css']
 })
 export class ClientInfoComponent implements OnInit {
-  currentClient: ClientInfo;
+  client: ClientInfo;
 
   constructor() { }
 
   ngOnInit() {
     // in production it may got from backend after auth
-    this.currentClient = {
-      type: 'Индивидуальный предприниматель',
+    this.client = {
       name: 'Мария',
       surname: 'Швецова',
       patronymic: 'Валерьевна',
       phone: '+79193977777',
-      page: 'www.mary.com',
+      site: 'www.mary.com',
       email: 'mary@tochka.com'
     };
   }
