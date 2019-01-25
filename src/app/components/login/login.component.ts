@@ -17,11 +17,12 @@ export class LoginComponent implements OnInit {
 
   onSubmit(f: NgForm) {
     const { email, password } = f.value;
-    // auth.loginUser
-    console.log(email, password);
-    // if ok
-    this.router.navigate(['public']);
-    // else
-    return;
+    // this.auth.loginUser(email, password).subscribe();
+    if (email === 'test') {
+      return this.router.navigate(['public']);
+    }
+    if (email === 'admin') {
+      return this.router.navigate(['admin']);
+    }
   }
 }

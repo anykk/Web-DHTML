@@ -1,40 +1,57 @@
 <nav>
-  <a routerLink="/pay" routerLinkActive="active_css">Заплатить</a>
-  <a routerLink="/request-pay" routerLinkActive="active_css">Запросить платёж</a>
+  <a class="operations-link" routerLink="/public/pay" routerLinkActive="operations-link-focus">Заплатить</a>
+  <a class="operations-link" routerLink="/public/request-pay" routerLinkActive="operations-link-focus">Запросить платёж</a>
 </nav>
 
 <router-outlet></router-outlet>
 
-<section>
-  <h3>О компании Индивидуальный предприниматель Швецова Мария Валерьевна</h3>
-  <div class="products">
-    <article class="products__item">
-      <div> <!-- ngFor product in [productsFromServer] -->
-        <img src="" alt="">
+<section class="products">
+  <h2 class="products__header">
+    О компании Индивидуальный предприниматель Швецова Мария Валерьевна
+  </h2>
+  <div class="products__items">
+    <article class="product">
+      <div class="product__img-wrapper">
+        <img
+          class="product__img"
+          src="../../../assets/images/ball.jpg"
+          alt="Клубника на улице Рамбла"
+          width="256"
+        >
       </div>
-      <div>
-        <h4>Product</h4>
-        <p>cost</p>
+      <div class="product__info">
+        <h4>Клубника на улице Рамбла</h4>
+        <p class="lightgray-text">139,99 руб.</p>
+      </div>
+    </article>
+    <article class="product">
+      <div class="product__img-wrapper">
+        <img
+          class="product__img"
+          src="../../../assets/images/palms.jpg"
+          alt="Золотой Пляж"
+          width="256"
+          height="171"
+        >
+      </div>
+      <div class="product__info">
+        <h4>Золотой Пляж</h4>
+        <p class="lightgray-text">35,89 руб.</p>
+      </div>
+    </article>
+    <article class="product">
+      <div class="product__img-wrapper">
+        <img
+          class="product__img"
+          src="../../../assets/images/ball.jpg"
+          alt="Экскурсии"
+          width="256"
+        >
+      </div>
+      <div class="product__info">
+        <h4>Экскурсии</h4>
+        <p class="lightgray-text">1000р/час</p>
       </div>
     </article>
   </div>
 </section>
-
-<!-- <div class="full-information">
-    Испа́ния (исп. и галис. España), официально Короле́вство Испа́ния
-    (исп. и галис. Reino de España МФА [ˈreino ðe esˈpaɲa])
-    — суверенное государство на юго-западе Европы и частично
-    в Африке, член Европейского союза и НАТО.
-    Испания занимает бо́льшую часть (80 %)
-    Пиренейского полуострова, а также Канарские и Балеарские острова, имеет
-    общую площадь 504 782 км² (вместе с небольшими суверенными территориями
-    на африканском побережье, городами Сеута и Мелилья), являясь четвёртой
-    по величине страной в Европе (после России, Украины и Франции).
-</div> -->
-
-<!-- <a href="https://vk.com/share.php?url=http://mysite.com" target="_blank">Поделиться ВКонтакте</a>
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet"
-  target="_blank">
-Tweet</a>
-<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://mysite.com">Поделиться</a> -->

@@ -1,0 +1,19 @@
+.bank-link::before
+{
+  content: url("../../../assets/images/baseline-credit_card-24px.svg");
+}
+
+.bank-link
+{
+  color: #68d;
+  text-decoration: none;
+  display: inline-block;
+  padding: 10px 10px 20px 10px;
+  font-size: 18px;
+}
+
+.bank-link-focus
+{
+  color: black;
+  background: lightgray;
+}

@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
+export const TOKEN_NAME = 'jwt';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private url = '/api/auth';
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
   constructor(private http: HttpClient) { }
 
-  loginUser(user) {
-    return this.http.post('url', user); // paswd hash must be + over ssl
+  loginUser(email: string, password: string) {
+    return this.http.post(this.url, { email, password }, {headers: this.headers});
   }
 
   loggedIn(): Boolean {

@@ -1,0 +1,41 @@
+p
+{
+  display: block;
+  text-align: center;
+}
+
+.form
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form__row
+{
+  margin: auto;
+  padding: 10px;
+}
+
+.form__row label
+{
+  display: inline-block;
+  text-align: left;
+}
+
+.form__row label
+{
+  width: 200px;
+}
+
+.form__row input,
+.form__row select
+{
+  width: 300px;
+}
+
+button
+{
+  width: 200px;
+  margin: 5px auto;
+}

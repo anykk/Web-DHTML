@@ -8,6 +8,38 @@ app-client-info
   /* border-bottom: 1px solid #808080; */
 }
 
+.all-content,
+input[id='hider'],
+input[id='hider']:checked ~ .preview-content,
+input[id='hider']:checked ~ label[for='hider']
+{
+  display: none;
+}
+
+.all-content,
+.preview-content
+{
+  max-width: 800px;
+  margin: 20px;
+}
+
+input[id='hider']:checked ~ .all-content,
+.preview-content
+{
+  display: flex;
+  justify-content: center;
+  margin: 10px auto;
+}
+
+label[for='hider']
+{
+  display: block;
+  margin: auto;
+  text-decoration: none;
+  color: #0099ff;
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 768px)
 {
