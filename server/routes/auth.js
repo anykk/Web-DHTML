@@ -21,12 +21,12 @@ router.post('/login', (req, res) => {
       const payload = { subject: user._id, role: user.role };
       const token = jwt.sign(payload, secretKey);
 
-      res.status(200).cookie('jwt', token, { httpOnly: true }).send({ role: user.role });
+      res.status(200).header('X-Set-Authorization', token).send({ role: user.role });
   });
 });
 
 router.get('/loggedIn', (req, res) => {
-  const token = req.cookies.jwt;
+  const token = req.get('x-authorization');
   try {
     const decoded = jwt.verify(token, secretKey);
     res.status(200).send({ role: decoded.role });

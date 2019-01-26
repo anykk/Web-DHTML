@@ -16,13 +16,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(f: NgForm) {
-    const { email, password } = f.value;
-    // this.auth.loginUser(email, password).subscribe();
-    if (email === 'test') {
-      return this.router.navigate(['public']);
-    }
-    if (email === 'admin') {
-      return this.router.navigate(['admin']);
-    }
+    const { login, password } = f.value;
+    this.auth.loginUser(login, password).subscribe(response => {
+      if (response.ok) {
+        localStorage.setItem('jwt', response.headers.get('x-set-authorization'));
+        const role = response.body['role'];
+        console.log(role);
+        this.auth.setRole(role);
+
+        if (role === 'admin') {
+          return this.router.navigate(['admin']);
+        }
+
+        return this.router.navigate(['public']);
+      }
+    }, err => console.log(err));
   }
 }

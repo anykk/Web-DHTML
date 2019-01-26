@@ -1,23 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { isNullOrUndefined } from 'util';
 
-export const TOKEN_NAME = 'jwt';
+type Role = 'user' | 'admin';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Request-Methods': 'GET,POST,PATCH'
+  });
 
-  private url = '/api/auth';
-  private headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  private role?: Role;
 
   constructor(private http: HttpClient) { }
 
-  loginUser(email: string, password: string) {
-    return this.http.post(this.url, { email, password }, {headers: this.headers});
+  loginUser(login: string, password: string) {
+    return this.http.post('http://localhost:4300/login', { login, password },
+      { observe: 'response', responseType: 'json', headers: this.headers });
   }
 
-  loggedIn(): Boolean {
-    return true; // !!cookie.getToken()
+  loggedIn(): boolean {
+    return !isNullOrUndefined(localStorage.getItem('jwt'));
+  }
+
+  setRole(role: Role) {
+    this.role = role;
+  }
+
+  getRole() {
+    return this.role;
   }
 }

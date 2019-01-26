@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const coockieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const frontendOrigin = 'http://localhost:4200';
@@ -16,7 +16,7 @@ const corsOptions = {
 // init server and add helpers&middlewares
 const app = express();
 app.use(bodyParser.json());
-app.use(coockieParser());
+app.use(cookieParser());
 app.use(cors(corsOptions));
 
 const auth = require('./routes/auth');
