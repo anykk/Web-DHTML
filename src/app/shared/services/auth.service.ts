@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
+import { Router } from '@angular/router';
 
 type Role = 'user' | 'admin';
 
@@ -15,11 +16,17 @@ export class AuthService {
 
   private role?: Role;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   loginUser(login: string, password: string) {
     return this.http.post('http://localhost:4300/login', { login, password },
       { observe: 'response', responseType: 'json', headers: this.headers });
+  }
+
+  logoutUser() {
+    localStorage.removeItem('jwt');
+    this.role = undefined;
+    this.router.navigate(['/login']);
   }
 
   loggedIn(): boolean {

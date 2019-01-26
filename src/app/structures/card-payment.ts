@@ -1,7 +1,7 @@
 export interface CardPayment {
   number: number;
   expiry: string;
-  cvc: number;
+  cvc: string;
   sum: number;
   comment: string;
   email: string;

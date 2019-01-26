@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { masks } from '../../shared/masks';
+import { PaymentService } from 'src/app/shared/services/payment.service';
 import { CardPayment } from 'src/app/structures/card-payment';
 
 @Component({
@@ -14,17 +15,17 @@ export class AnyBankComponent implements OnInit {
   cardMask = masks.cardNumber;
   expiryMask = masks.expiry;
 
-  constructor() {}
+  constructor(private paymentService: PaymentService) {}
 
   ngOnInit() {
   }
 
   onSubmit(f: NgForm) {
-    console.log(f.value);
-    // this._paymentService.pay(this.paymentModel)
-    //   .subscribe(
-    //     console.log,
-    //     console.error
-    //   );
+    const payment: CardPayment = f.value;
+    this.paymentService.storeCardPayment(payment).subscribe(response => {
+      if (response.ok) {
+        f.resetForm();
+      }
+    });
   }
 }

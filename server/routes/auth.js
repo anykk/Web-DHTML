@@ -25,17 +25,6 @@ router.post('/login', (req, res) => {
   });
 });
 
-router.get('/loggedIn', (req, res) => {
-  const token = req.get('x-authorization');
-  try {
-    const decoded = jwt.verify(token, secretKey);
-    res.status(200).send({ role: decoded.role });
-  } catch (err) {
-    console.log(err);
-    res.status(401).send();
-  }
-});
-
 router.post('/register', (req, res) => {
   const userData = new User(req.body);
   userData.save()

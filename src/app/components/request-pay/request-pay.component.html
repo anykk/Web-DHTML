@@ -14,7 +14,7 @@
       pattern="[0-9]{10}|[0-9]{12}"
       minlength="10"
       maxlength="12"
-      [(ngModel)]="paymentInfo.inn"
+      ngModel
       #inn="ngModel"
       required
     >
@@ -35,12 +35,12 @@
     >
   </div>
   <div class="form__row">
-    <label for="bankAccount">Номер счёта</label>
+    <label for="account">Номер счёта</label>
     <input
       class="class"
       type="text"
-      name="bankAccount"
-      id="bankAccount"
+      name="account"
+      id="account"
       pattern="[0-9]{20}"
       placeholder="20 цифр"
       minlength="20"
@@ -52,7 +52,7 @@
   </div>
   <div class="form__row">
     <label for="nds">За что</label>
-    <select name="nds" id="nds" [(ngModel)]="paymentInfo.nds" #nds="ngModel" required>
+    <select name="nds" id="nds" ngModel #nds="ngModel" required>
       <option value="" disabled selected hidden>
         Выберите один из вариантов
       </option>
@@ -105,7 +105,7 @@
       >
     </div>
   <button class="gradient-button" type="submit" [disabled]="f.invalid">
-    Получить файл для интернет-банка
+    Создать платёж
   </button>
   <button class="blue-button" type="reset" [disabled]="f.untouched || f.pristine">
     Очистить форму

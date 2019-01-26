@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { ExpiryDirective } from './shared/directives/expiry.directive';
@@ -19,6 +19,7 @@ import { AdminComponent } from './components/admin/admin.component';
 import { PublicComponent } from './components/public/public.component';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
+import { TokenInterceptorService } from './shared/services/token-interceptor.service';
 // body: Geometria,Arial,sans-serif h: Anglecia,Arial,sans-serif
 
 @NgModule({
@@ -42,7 +43,12 @@ import { AuthGuard } from './shared/guards/auth.guard';
     TextMaskModule,
     HttpClientModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 

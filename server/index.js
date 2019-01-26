@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
 const frontendOrigin = 'http://localhost:4200';
@@ -16,10 +15,12 @@ const corsOptions = {
 // init server and add helpers&middlewares
 const app = express();
 app.use(bodyParser.json());
-app.use(cookieParser());
 app.use(cors(corsOptions));
 
 const auth = require('./routes/auth');
-app.use('', auth);
+const cardPayment = require('./routes/card-payment');
+const requestPayment = require('./routes/request-payment');
+
+app.use('', [auth, cardPayment, requestPayment]);
 
 app.listen(4300, () => console.log(`Server is running on http://localhost:${port}.`));
