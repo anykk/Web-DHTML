@@ -40,6 +40,14 @@ label[for='hider']
   cursor: pointer;
 }
 
+.logout
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  margin: 20px;
+}
 
 @media screen and (max-width: 768px)
 {
