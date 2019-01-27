@@ -17,5 +17,5 @@ const paymentRequestSchema = new Schema({
   }
 })
 
-const Payment = mongoose.model('PaymentRequest', paymentRequestSchema);
-module.exports = Payment;
+const PaymentRequest = mongoose.model('PaymentRequest', paymentRequestSchema);
+module.exports = PaymentRequest;

@@ -20,7 +20,8 @@ app.use(cors(corsOptions));
 const auth = require('./routes/auth');
 const cardPayment = require('./routes/card-payment');
 const requestPayment = require('./routes/request-payment');
+const payment = require('./routes/payment');
 
-app.use('', [auth, cardPayment, requestPayment]);
+app.use('', [auth, cardPayment, requestPayment, payment]);
 
 app.listen(4300, () => console.log(`Server is running on http://localhost:${port}.`));

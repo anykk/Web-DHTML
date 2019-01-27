@@ -19,14 +19,15 @@ router.get('/cardPayment', verifyAdmin, (_, res) => {
   Payment.find({}, (err, payments) => {
     if (err) return res.status(500).send();
     res.status(200).send(Array.from(payments));
-  })
+  });
 });
 
 router.patch('/cardPayment/:_id', verifyAdmin, (req, res) => {
-  Payment.findOneAndUpdate({ _id: req.params._id }, req.body, (err, _) => {
+  Payment.findByIdAndUpdate(req.params._id,
+    { 'secure': !req.body.secure }, (err, _) => {
     if (err) return res.status(500).send();
     return res.status(200).send();
-  })
+  });
 });
 
 module.exports = router;

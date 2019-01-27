@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
       const payload = { subject: user._id, role: user.role };
       const token = jwt.sign(payload, secretKey);
 
-      res.status(200).header('X-Set-Authorization', token).send({ role: user.role });
+      res.status(200).header('X-Set-Authorization', `${token}__${user.role}`).send();
   });
 });
 
