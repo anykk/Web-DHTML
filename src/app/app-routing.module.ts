@@ -11,11 +11,17 @@ import { PublicComponent } from './components/public/public.component';
 
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
+import { CardPaymentsComponent } from './components/admin/card-payments/card-payments.component';
+import { PaymentRequestsComponent } from './components/admin/payment-requests/payment-requests.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'public' },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard], children: [
+    { path: '', pathMatch: 'full', redirectTo: 'card-payments' },
+    { path: 'card-payments', component: CardPaymentsComponent },
+    { path: 'payment-requests', component: PaymentRequestsComponent }
+  ] },
   { path: 'public', component: PublicComponent, canActivate: [AuthGuard], children: [
     { path: '', pathMatch: 'full', redirectTo: 'pay' },
     {

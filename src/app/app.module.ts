@@ -20,6 +20,8 @@ import { PublicComponent } from './components/public/public.component';
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { TokenInterceptorService } from './shared/services/token-interceptor.service';
+import { CardPaymentsComponent } from './components/admin/card-payments/card-payments.component';
+import { PaymentRequestsComponent } from './components/admin/payment-requests/payment-requests.component';
 // body: Geometria,Arial,sans-serif h: Anglecia,Arial,sans-serif
 
 @NgModule({
@@ -35,6 +37,8 @@ import { TokenInterceptorService } from './shared/services/token-interceptor.ser
     LoginComponent,
     AdminComponent,
     PublicComponent,
+    CardPaymentsComponent,
+    PaymentRequestsComponent,
   ],
   imports: [
     BrowserModule,

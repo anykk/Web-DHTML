@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService, Role } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
     const { login, password } = f.value;
     this.auth.loginUser(login, password).subscribe(response => {
       if (response.ok) {
-        localStorage.setItem('jwt', response.headers.get('x-set-authorization'));
-        const role = response.body['role'];
-        console.log(role);
+        const jwt = response.headers.get('x-set-authorization');
+        localStorage.setItem('jwt', jwt);
+        const role = jwt.split('__')[1] as Role;
         this.auth.setRole(role);
 
         if (role === 'admin') {

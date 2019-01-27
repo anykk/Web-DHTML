@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
 
-type Role = 'user' | 'admin';
+export type Role = 'user' | 'admin';
 
 @Injectable({
   providedIn: 'root'

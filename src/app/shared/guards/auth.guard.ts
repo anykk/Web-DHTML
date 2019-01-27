@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService, Role } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,9 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): boolean {
     if (this.auth.loggedIn()) {
+      const role = localStorage.getItem('jwt').split('__')[1] as Role;
+      this.auth.setRole(role);
+
       return true;
     }
 

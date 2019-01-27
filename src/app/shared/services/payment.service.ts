@@ -23,4 +23,24 @@ export class PaymentService {
     return this.http.post('http://localhost:4300/requestPayment', payment,
     { observe: 'response', responseType: 'json', headers: this.headers });
   }
+
+  getPayments() {
+    return this.http.get('http://localhost:4300/requestPayment',
+    { observe: 'response', responseType: 'json', headers: this.headers });
+  }
+
+  getCardPayments() {
+    return this.http.get('http://localhost:4300/cardPayment',
+    { observe: 'response', responseType: 'json', headers: this.headers });
+  }
+
+  changePaymentSecurity(id: number, secure: boolean) {
+    return this.http.patch('http://localhost:4300/cardPayment' + `/${id}`, { secure },
+    { observe: 'response', responseType: 'json', headers: this.headers });
+  }
+
+  getPaymentFile(formData) {
+    return this.http.post('http://localhost:4300/getPaymentFile', formData,
+      { observe: 'response', responseType: 'text', headers: this.headers });
+  }
 }
